@@ -1,0 +1,17 @@
+<ion-card>
+    <ion-card-header>
+        <img [src]="user.photoURL || 'assets/icon/anon.svg'">
+        <ion-card-title>{{ user.displayName }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+            Age: {{ user.Age }}<br> Email: {{ user.email || 'unknown' }}
+        <br> Occupation: {{ user.Occupation || 'unknown' }}
+        <br> Gender: {{ user.Gender || 'unknown' }}
+        <br> AboutMe: {{ user.AboutMe || 'unknown' }}
+        <br> City: {{ user.City || 'unknown' }}
+         <br> RoomType: {{ user.RoomType || 'unknown' }}
+    <br> Price: {{ user.Price.lower}} {{user.Price.upper}}
+    </ion-card-content>
+</ion-card>
+

@@ -1,0 +1,18 @@
+ion-slide {
+    height: 100vh;
+    flex-direction: column;
+    text-align: justify;
+}
+
+ion-img {
+    max-width: 30vw;
+    max-height: 30vh;
+}
+
+p {
+    padding: 1em;
+}
+
+.step-one {
+    background: var(--ion-color-white);
+}

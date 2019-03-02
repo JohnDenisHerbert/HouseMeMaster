@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button autoHide></ion-menu-button>
+        </ion-buttons>
+
+        <ion-title>My Property List</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+
+    <ion-segment (ionChange)="updateFilter($event.detail.value)">
+        <ion-segment-button value="" checked>
+            All
+        </ion-segment-button>
+        <ion-segment-button value="Available">
+                Available
+            </ion-segment-button>
+        <ion-segment-button value="Unavailable">
+            Unavailable
+        </ion-segment-button>
+       
+
+
+    </ion-segment>
+
+    <ion-list>
+
+        <ion-item *ngFor="let Property of filtered | async; trackBy: trackById">
+            <ion-label>
+                <span [class.Unavailable]="Property.status === 'Unavailable'">{{ Property.content }}</span>
+            </ion-label>
+
+           
+
+
+            <ion-button [href]="'Property/' + Property.id">
+                <ion-icon name="eye"></ion-icon>
+            </ion-button>
+
+            <ion-button (click)="presentPropertyForm(Property)" color="tertiary">
+                <ion-icon name="create"></ion-icon>
+            </ion-button>
+
+            <ion-button (click)="deleteProperty(Property)" color="danger">
+                <ion-icon name="trash"></ion-icon>
+            </ion-button>
+        </ion-item>
+
+
+    </ion-list>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="presentPropertyForm()">
+        <ion-fab-button>
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+
+
+</ion-content>

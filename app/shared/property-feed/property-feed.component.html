@@ -1,0 +1,44 @@
+<ion-card *ngFor="let Property of Propertys | async; trackBy: trackById">
+  
+    <ion-slides loop="true" pager="true" >
+      <ion-slide>
+        <ion-img [src]= "Property.PhotoURL"></ion-img>
+      </ion-slide>
+    
+      <ion-slide>
+        <ion-img [src]= "Property.PhotoURL1"></ion-img>
+      </ion-slide>
+    
+      <ion-slide>
+        <ion-img [src]= "Property.PhotoURL2"></ion-img>
+      </ion-slide>
+
+      <ion-slide>
+        <ion-img [src]= "Property.PhotoURL3"></ion-img>
+      </ion-slide>
+
+      <ion-slide>
+        <ion-img [src]= "Property.PhotoURL4"></ion-img>
+      </ion-slide>
+    </ion-slides>
+ 
+    
+    <ion-card-header>
+      <ion-card-title> {{Property.DisplayName}}</ion-card-title>
+  </ion-card-header>
+    <ion-card-content>
+      Price: {{ Property.Price }}
+      <p>Description: {{Property.content}}</p>
+      <p>Location: {{Property.City}}</p>
+      <p>Amenities: {{Property.Amenities}}</p>
+    </ion-card-content>
+    
+
+<ion-item (click)="toggleHeart(Property)">
+  <ion-icon [name]="heartType"></ion-icon>
+</ion-item>
+
+
+  </ion-card>
+
+

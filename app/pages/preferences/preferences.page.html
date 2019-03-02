@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-title *ngIf="auth.user$ | async as user">Update {{ user.uid }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <form [formGroup]="ProfileForm" (ngSubmit)="UpdateUser()">
+
+      <ion-label>Looking For</ion-label>
+    
+      <ion-item>
+        <ion-label>City</ion-label>
+        <ion-select formControlName="City" type="City" placeholder="Select One">
+          <ion-select-option value="Dublin">Dublin</ion-select-option>
+          <ion-select-option value="Cork">Cork</ion-select-option>
+          <ion-select-option value="Galway">Galway</ion-select-option>
+          <ion-select-option value="Waterford">Waterford</ion-select-option>
+          <ion-select-option value="Limerick">Limerick</ion-select-option>
+
+        </ion-select>
+      </ion-item>
+
+    <ion-item>
+    <ion-label>Room Type</ion-label>
+    <ion-select formControlName="RoomType" type="RoomType" placeholder="Select One">
+      <ion-select-option value="Apartment">Single</ion-select-option>
+      <ion-select-option value="House">Double</ion-select-option>   
+      <ion-select-option value="House">Shared</ion-select-option>
+    </ion-select>
+  </ion-item>
+    
+  <ion-item>
+      <ion-label>Price Per Month</ion-label>
+  
+          <ion-range dualKnobs="true" min="0" max="2000" step="10" snaps="true" formControlName="Price" type="Price" color="secondary">
+        <ion-label slot="start">0</ion-label>
+        <ion-label slot="end">2000</ion-label>
+      </ion-range>
+    </ion-item>
+
+      <ion-button type="submit">{{ user ? 'Update!' : 'Update!' }}</ion-button>
+  </form>
+
+
+<!--[disabled]="ProfileForm.invalid"--> 
+
+</ion-content>

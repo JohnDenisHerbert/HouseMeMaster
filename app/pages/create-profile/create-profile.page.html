@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-title *ngIf="auth.user$ | async as user">Update {{ user.uid }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <form [formGroup]="ProfileForm" (ngSubmit)="UpdateUser()">
+
+      <ion-label>User Details Update</ion-label>
+      <ion-item>
+          <ion-label>Age</ion-label>
+      <ion-textarea formControlName="Age" type="Age" placeholder="Age" rows="1"></ion-textarea>
+      </ion-item>
+      <ion-item>
+          <ion-label>Occupation</ion-label>
+      <ion-textarea formControlName="Occupation" type="Occupation" placeholder="Occupation" rows="1"></ion-textarea>
+      </ion-item>
+      <ion-item>
+          <ion-label>Gender</ion-label>
+      <ion-textarea formControlName="Gender" type="Gender" placeholder="Gender " rows="1"></ion-textarea>
+      </ion-item>
+      <ion-item>
+          <ion-label>About Me</ion-label>
+      <ion-textarea formControlName="AboutMe" type="AboutMe" placeholder="AboutMe" rows="4"></ion-textarea>
+      </ion-item>
+      
+
+      <ion-button type="submit">{{ user ? 'Update!' : 'Update!' }}</ion-button>
+  </form>
+
+
+<!--[disabled]="ProfileForm.invalid"--> 
+
+</ion-content>

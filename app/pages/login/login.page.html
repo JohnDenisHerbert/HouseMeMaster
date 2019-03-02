@@ -1,0 +1,43 @@
+<ion-content class="no-scroll presentation-bg">
+  <div class="auth-content">
+    <!-- Logo -->
+      <div class="logo">
+        <img src="src\assets\icon\splash.png">
+      </div>
+      <h2 ion-text color="light" no-margin>
+      </h2>
+   
+
+    <div>
+      <form [formGroup]="loginForm" class="list-form">
+
+        <ion-item>
+          <ion-label floating>
+            <ion-icon name="mail" item-start class="text-white"></ion-icon>
+             {{ 'email' }}
+          </ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <p ion-text no-margin color="danger" class="text-12x has-error animated fadeIn" *ngIf="(loginForm.controls.email.hasError('required') || !loginForm.controls.email.valid) && hasError">{{ 'auth.form.error.email'}}</p>
+
+        <ion-item>
+          <ion-label floating>
+            <ion-icon name="lock" item-start class="text-white"></ion-icon>
+            {{ 'password' }}
+          </ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <p ion-text no-margin color="danger" class="text-12x has-error animated fadeIn" *ngIf="(loginForm.controls.password.hasError('required') || !loginForm.controls.password.valid) && hasError">{{ 'auth.form.error.password'}}</p>
+
+        <div text-center padding-vertical>
+          <ion-button (click)="login()" ><b>{{ 'login' }}</b></ion-button>
+         
+        </div>
+        <ion-button color="primary" (click)="auth.googleLogin()">
+          <ion-icon slot="start" name="logo-google"></ion-icon>
+          Login with Google
+      </ion-button>
+      </form>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title *ngIf="!Property">Create New Property</ion-title>
+        <ion-title *ngIf="Property">Update {{ Property.id }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <div></div>
+
+    <form [formGroup]="PropertyForm" (ngSubmit)="createProperty()">
+
+        <ion-label>Property Details</ion-label>
+        <ion-textarea formControlName="content" type="content" placeholder="your Property details" rows="2"></ion-textarea>
+        <ion-range formControlName="Price" type="Price" placeholder="Property Price" rows="1">
+            <ion-label slot="start">0</ion-label>
+          <ion-label slot="end">5000</ion-label>
+        </ion-range>
+        <ion-select formControlName="City" type="City" placeholder="City" rows="1">
+            <ion-select-option value="Dublin">Dublin</ion-select-option>
+            <ion-select-option value="Cork">Cork</ion-select-option>
+            <ion-select-option value="Galway">Galway</ion-select-option>
+            <ion-select-option value="Waterford">Waterford</ion-select-option>
+            <ion-select-option value="Limerick">Limerick</ion-select-option>
+
+        </ion-select>
+        <ion-textarea formControlName="DisplayName" type="DisplayName" placeholder="Display Name" rows="1"></ion-textarea>
+        <ion-textarea formControlName="PhotoURL" type="PhotoURL" placeholder="Photo Url" rows="1"></ion-textarea>
+        <ion-textarea formControlName="Amenities" type="Amenities" placeholder="Amenities details" rows="2"></ion-textarea>
+       <ion-item>
+        <input type="file" (change)="uploadFile($event)" />
+        <div>{{ uploadPercent | async }}</div>
+        <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+       </ion-item>
+        <ion-label>Status</ion-label>
+
+        <ion-list>
+            <ion-radio-group formControlName="status">
+
+                <ion-item>
+                    <ion-label>Available</ion-label>
+                    <ion-radio slot="start" value="Available" checked></ion-radio>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Unavailable</ion-label>
+                    <ion-radio slot="start" value="Unavailable"></ion-radio>
+                </ion-item>
+
+            </ion-radio-group>
+        </ion-list>
+
+        <ion-button  type="submit">{{ Property ? 'Update!' : 'Create!' }}</ion-button>
+    </form>
+
+
+
+
+</ion-content>

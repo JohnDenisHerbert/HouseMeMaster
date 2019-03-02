@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title *ngIf="user">Update {{ users.uid }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+
+    <form [formGroup]="ProfileForm" (ngSubmit)="UpdateUser()">
+
+        <ion-label>User Details Update</ion-label>
+        <ion-textarea formControlName="displayName" type="displayName" placeholder="your displayName" rows="1"></ion-textarea>
+        <ion-textarea formControlName="Age" type="Age" placeholder="Age" rows="1"></ion-textarea>
+        <ion-textarea formControlName="Occupation" type="Occupation" placeholder="Occupation" rows="1"></ion-textarea>
+        <ion-textarea formControlName="Gender" type="Gender" placeholder="Gender " rows="1"></ion-textarea>
+        <ion-textarea formControlName="photoURL" type="photoURL" placeholder="Photo Url" rows="1"></ion-textarea>
+        <ion-textarea formControlName="isLandlord" type="isLandlord" placeholder="Are you a Landlord" rows="1"></ion-textarea>
+        <ion-textarea formControlName="AboutMe" type="AboutMe" placeholder="AboutMe" rows="4"></ion-textarea>
+       
+        <ion-list>
+        
+        </ion-list><ion-list-header>Looking For</ion-list-header>
+      
+        <ion-item>
+          <ion-label>City</ion-label>
+          <ion-select formControlName="City" type="City" placeholder="Select One">
+            <ion-select-option value="Dublin">Dublin</ion-select-option>
+            <ion-select-option value="Cork">Cork</ion-select-option>
+            <ion-select-option value="Galway">Galway</ion-select-option>
+            <ion-select-option value="Waterford">Waterford</ion-select-option>
+            <ion-select-option value="Limerick">Limerick</ion-select-option>
+
+          </ion-select>
+        </ion-item>
+
+      <ion-item>
+      <ion-label>Room Type</ion-label>
+      <ion-select formControlName="RoomType" type="RoomType" placeholder="Select One">
+        <ion-select-option value="Apartment">Single</ion-select-option>
+        <ion-select-option value="House">Double</ion-select-option>   
+        <ion-select-option value="House">Shared</ion-select-option>
+      </ion-select>
+    </ion-item>
+      
+    <ion-item>
+        <ion-label>Price Per Month</ion-label>
+        <ion-range formControlName="Price" type="Price" color="secondary">
+          <ion-label slot="start">0</ion-label>
+          <ion-label slot="end">5000</ion-label>
+        </ion-range>
+      </ion-item>
+
+        <ion-button type="submit">{{ user ? 'Update!' : 'Create!' }}</ion-button>
+    </form>
+
+
+<!--[disabled]="ProfileForm.invalid"--> 
+
+</ion-content>

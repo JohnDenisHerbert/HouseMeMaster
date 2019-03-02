@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<app-profile></app-profile>
+
+    <ion-fab  (click)="presentProfileForm()">
+      <ion-button>
+          Change Details
+      </ion-button>
+  </ion-fab>
+ 
+</ion-content>

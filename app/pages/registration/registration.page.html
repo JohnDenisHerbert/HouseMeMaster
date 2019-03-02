@@ -1,0 +1,48 @@
+<ion-content>
+  <div class="auth-content">
+    <!-- Logo -->
+    <div class="animated fadeInDown" padding-horizontal text-center>
+      <div class="logo">
+      </div>
+      <h2 ion-text color="light" no-margin>
+        <span class="text-bright">House</span><strong>Me</strong>
+      </h2>
+    </div>
+
+    <div padding-vertical class="animated fadeIn">
+      <form [formGroup]="registerForm" class="list-form">
+
+        <ion-item>
+          <ion-label floating>
+            <ion-icon name="mail" item-start class="text-white"></ion-icon>
+            {{ 'email'  }}
+          </ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <p ion-text no-margin color="danger" class="text-12x has-error animated fadeIn" *ngIf="(registerForm.controls.email.hasError('required') || !registerForm.controls.email.valid) && hasError">{{ 'auth.form.error.email'  }}</p>
+
+        <ion-item>
+          <ion-label floating>
+            <ion-icon name="lock" item-start class="text-white"></ion-icon>
+            {{ 'password'  }}
+          </ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <p ion-text no-margin color="danger" class="text-12x has-error animated fadeIn" *ngIf="(registerForm.controls.password.hasError('required') || !registerForm.controls.password.valid) && hasError">{{ 'auth.form.error.password'  }}</p>
+
+        <ion-item>
+          <ion-label floating>
+            <ion-icon name="lock" item-start class="text-white"></ion-icon>
+            {{ 'confirm'  }}
+          </ion-label>
+          <ion-input type="password" formControlName="confirmPassword"></ion-input>
+        </ion-item>
+        <div text-center padding-vertical>
+          <ion-button (click)="register()" ><b>{{ 'register'  }}</b></ion-button>
+         
+       </div>
+
+      </form>
+    </div>
+  </div>
+</ion-content>
